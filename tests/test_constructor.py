@@ -1,39 +1,29 @@
 from locators import Locators
 import data
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
+from helper import wait_until_visible
+
+
+def switch_to_tab(driver, tab_locator):
+    driver.get(data.stellar_burgers_url)
+
+    wait_until_visible(driver, tab_locator)
+    if driver.find_element(*Locators.CURRENT_TAB).text == driver.find_element(*tab_locator).text:
+        driver.find_element(*Locators.UNSELECTED_TAB).click()
+    driver.find_element(*tab_locator).click()
+
+    tab_name_selected = (driver.find_element(*Locators.CURRENT_TAB).text == driver.find_element(*tab_locator).text)
+    driver.quit()
+
+    return tab_name_selected
 
 
 class TestConstructor:
+
     def test_switch_to_buns(self, driver):
-        driver.get(data.stellar_burgers_url)
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.BUNS_TAB))
-        if driver.find_element(*Locators.CURRENT_TAB).text == "Булки":
-            driver.find_element(*Locators.FILLING_TAB).click()
-        driver.find_element(*Locators.BUNS_TAB).click()
-        WebDriverWait(driver, 5).until(expected_conditions.text_to_be_present_in_element(Locators.CURRENT_TAB, "Булки"))
-        buns_tab_selected = (driver.find_element(*Locators.CURRENT_TAB).text == "Булки")
-        driver.quit()
-        assert buns_tab_selected
+        assert switch_to_tab(driver, Locators.BUNS_TAB), 'Не удалось перейти на вкладку "Булки"'
 
     def test_switch_to_sauces(self, driver):
-        driver.get(data.stellar_burgers_url)
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.SAUCE_TAB))
-        if driver.find_element(*Locators.CURRENT_TAB).text == "Соусы":
-            driver.find_element(*Locators.BUNS_TAB).click()
-        driver.find_element(*Locators.SAUCE_TAB).click()
-        WebDriverWait(driver, 5).until(expected_conditions.text_to_be_present_in_element(Locators.CURRENT_TAB, "Соусы"))
-        sauces_tab_selected = (driver.find_element(*Locators.CURRENT_TAB).text == "Соусы")
-        driver.quit()
-        assert sauces_tab_selected
+        assert switch_to_tab(driver, Locators.SAUCE_TAB), 'Не удалось перейти на вкладку "Соусы"'
 
     def test_switch_to_filling(self, driver):
-        driver.get(data.stellar_burgers_url)
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.FILLING_TAB))
-        if driver.find_element(*Locators.CURRENT_TAB).text == "Начинки":
-            driver.find_element(*Locators.SAUCE_TAB).click()
-        driver.find_element(*Locators.FILLING_TAB).click()
-        WebDriverWait(driver, 5).until(expected_conditions.text_to_be_present_in_element(Locators.CURRENT_TAB, "Начинки"))
-        filling_tab_selected = (driver.find_element(*Locators.CURRENT_TAB).text == "Начинки")
-        driver.quit()
-        assert filling_tab_selected
+        assert switch_to_tab(driver, Locators.FILLING_TAB), 'Не удалось перейти на вкладку "Начинки"'

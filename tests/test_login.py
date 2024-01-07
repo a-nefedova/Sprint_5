@@ -1,45 +1,47 @@
 from locators import Locators
-from helper import log_in
+from helper import log_in, wait_until_visible
 import data
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestLogin:
-    def test_login_homepage_order_button(self, driver):
+
+    def test_login_from_homepage(self, driver):
         driver.get(data.stellar_burgers_url)
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_ACC_BUTTON))
+
+        wait_until_visible(driver, Locators.LOGIN_ACC_BUTTON)
         driver.find_element(*Locators.LOGIN_ACC_BUTTON).click()
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_BUTTON))
-        log_in(driver)
-        order_button_presence = bool(driver.find_elements(*Locators.ORDER_BUTTON))
-        driver.quit()
-        assert order_button_presence
 
-    def test_login_account_order_button(self, driver):
+        log_in(driver)
+        wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться')
+
+        driver.quit()
+
+    def test_login_from_account(self, driver):
         driver.get(f'{data.stellar_burgers_url}/account')
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_BUTTON))
-        log_in(driver)
-        order_button_presence = bool(driver.find_elements(*Locators.ORDER_BUTTON))
-        driver.quit()
-        assert order_button_presence
 
-    def test_login_register_order_button(self, driver):
+        log_in(driver)
+        wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться')
+
+        driver.quit()
+
+    def test_login_from_register_form(self, driver):
         driver.get(f'{data.stellar_burgers_url}/register')
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_LINK))
-        driver.find_element(*Locators.LOGIN_LINK).click()
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_BUTTON))
-        log_in(driver)
-        order_button_presence = bool(driver.find_elements(*Locators.ORDER_BUTTON))
-        driver.quit()
-        assert order_button_presence
 
-    def test_login_forgot_pass_order_button(self, driver):
-        driver.get(f'{data.stellar_burgers_url}/forgot-password')
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_LINK))
+        wait_until_visible(driver, Locators.LOGIN_LINK)
         driver.find_element(*Locators.LOGIN_LINK).click()
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(Locators.LOGIN_BUTTON))
+
         log_in(driver)
-        order_button_presence = bool(driver.find_elements(*Locators.ORDER_BUTTON))
+        wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться')
+
         driver.quit()
-        assert order_button_presence
+
+    def test_login_from_forgot_pass_form(self, driver):
+        driver.get(f'{data.stellar_burgers_url}/forgot-password')
+
+        wait_until_visible(driver, Locators.LOGIN_LINK)
+        driver.find_element(*Locators.LOGIN_LINK).click()
+
+        log_in(driver)
+        wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться')
+
+        driver.quit()

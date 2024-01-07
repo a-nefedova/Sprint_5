@@ -23,8 +23,10 @@ class Locators:
 
     LOGOUT_BUTTON = (By.XPATH, './/button[text()="Выход"]')                                 # кнопка "Выход"
 
-    MENU_CONTAINER = (By.XPATH, './/div[contains(@class, "menuContainer")]')  # секция с ингредиентами
+    MENU_CONTAINER = (By.XPATH, './/div[contains(@class, "menuContainer")]')                # секция с ингредиентами
     BUNS_TAB = (By.XPATH, './/div[contains(@class, "noselect")]/*[text()="Булки"]')         # вкладка "Булки"
     SAUCE_TAB = (By.XPATH, './/div[contains(@class, "noselect")]/*[text()="Соусы"]')        # вкладка "Соусы"
     FILLING_TAB = (By.XPATH, './/div[contains(@class, "noselect")]/*[text()="Начинки"]')    # вкладка "Начинки"
     CURRENT_TAB = (By.XPATH, './/div[contains(@class, "current")]/*')                       # текущая вкладка
+    UNSELECTED_TAB = (By.XPATH,                                                             # неактивная вкладка
+                      './/div[not(contains(@class, "current")) and contains(@class, "noselect")]/*')
