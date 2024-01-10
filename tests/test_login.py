@@ -13,6 +13,7 @@ class TestLogin:
 
         log_in(driver)
         wait_until_visible(driver, Locators.ORDER_BUTTON)
+        # кнопка войти в акк поменялась на оформить заказ, basket conteiner//button
 
 
 

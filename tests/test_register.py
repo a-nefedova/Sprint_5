@@ -1,6 +1,6 @@
 from locators import Locators
 from helper import log_in, wait_until_visible
-import data
+from data import URLs, Creds
 from selenium.webdriver.common.by import By
 
 
@@ -16,15 +16,13 @@ class TestRegister:
         driver.find_element(*Locators.REG_LINK).click()
 
         wait_until_visible(driver, Locators.REG_BUTTON)
-        driver.find_element(*Locators.USER_NAME).send_keys(data.name)
-        driver.find_element(*Locators.EMAIL).send_keys(data.temp_email)
-        driver.find_element(*Locators.PASSWORD).send_keys(data.password)
+        driver.find_element(*Locators.USER_NAME).send_keys(Creds.name)
+        driver.find_element(*Locators.EMAIL).send_keys(Creds.temp_email)
+        driver.find_element(*Locators.PASSWORD).send_keys(Creds.password)
         driver.find_element(*Locators.REG_BUTTON).click()
 
-        log_in(driver, data.temp_email)
+        log_in(driver, Creds.temp_email)
         wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться после регистрации')
-
-
 
     def test_register_enter_short_pass_alert(self, driver):
         driver.get(URLs.HOMEPAGE)
@@ -36,8 +34,8 @@ class TestRegister:
         driver.find_element(*Locators.REG_LINK).click()
 
         wait_until_visible(driver, Locators.REG_BUTTON)
-        driver.find_element(*Locators.USER_NAME).send_keys(data.name)
-        driver.find_element(*Locators.EMAIL).send_keys(data.temp_email)
+        driver.find_element(*Locators.USER_NAME).send_keys(Creds.name)
+        driver.find_element(*Locators.EMAIL).send_keys(Creds.temp_email)
         driver.find_element(*Locators.PASSWORD).send_keys('12345')
         driver.find_element(*Locators.REG_BUTTON).click()
 

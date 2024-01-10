@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 def wait_until_visible(driver, locator):
-    WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(locator))
+    return WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(locator))
 
 
 def wait_url_to_be(driver, url):
