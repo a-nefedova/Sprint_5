@@ -12,7 +12,7 @@ def switch_to_tab(driver, tab_locator):
     driver.find_element(*tab_locator).click()
 
     tab_name_selected = (driver.find_element(*Locators.CURRENT_TAB).text == driver.find_element(*tab_locator).text)
-    driver.quit()
+
 
     return tab_name_selected
 

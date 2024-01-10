@@ -14,7 +14,7 @@ class TestLogin:
         log_in(driver)
         wait_until_visible(driver, Locators.ORDER_BUTTON)
 
-        driver.quit()
+
 
     def test_login_from_account(self, driver):
         driver.get(URLs.ACCOUNT)
@@ -22,7 +22,7 @@ class TestLogin:
         log_in(driver)
         wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться')
 
-        driver.quit()
+
 
     def test_login_from_register_form(self, driver):
         driver.get(URLs.REGISTER)
@@ -33,7 +33,7 @@ class TestLogin:
         log_in(driver)
         wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться')
 
-        driver.quit()
+
 
     def test_login_from_forgot_pass_form(self, driver):
         driver.get(URLs.FORGOT_PASS)
@@ -44,4 +44,4 @@ class TestLogin:
         log_in(driver)
         wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться')
 
-        driver.quit()
+

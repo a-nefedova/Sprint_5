@@ -33,3 +33,4 @@ class Locators:
     CURRENT_TAB = (By.XPATH, './/div[contains(@class, "current")]/*')                       # текущая вкладка
     UNSELECTED_TAB = (By.XPATH,                                                             # неактивная вкладка
                       './/div[not(contains(@class, "current")) and contains(@class, "noselect")]/*')
+    H1_HEADER = (By.XPATH, './/main//h1')

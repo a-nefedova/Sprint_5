@@ -7,6 +7,7 @@ class TestOpenAccount:
 
     def test_open_account_creds(self, driver):
         driver.get(URLs.HOMEPAGE)
+        driver.find_element(*Locators.LOGIN_ACC_BUTTON).click()
 
         log_in(driver)
         wait_until_visible(driver, Locators.ORDER_BUTTON)

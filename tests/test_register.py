@@ -24,7 +24,7 @@ class TestRegister:
         log_in(driver, data.temp_email)
         wait_until_visible(driver, Locators.ORDER_BUTTON, 'Не удалось авторизоваться после регистрации')
 
-        driver.quit()
+
 
     def test_register_enter_short_pass_alert(self, driver):
         driver.get(URLs.HOMEPAGE)
@@ -42,5 +42,5 @@ class TestRegister:
         driver.find_element(*Locators.REG_BUTTON).click()
 
         alert_presence = bool(driver.find_elements(By.XPATH, './/p[text()="Некорректный пароль"]'))
-        driver.quit()
+
         assert alert_presence, 'Не найдено уведомление "Некорректный пароль"'
