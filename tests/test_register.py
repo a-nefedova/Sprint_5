@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 class TestRegister:
 
     def test_register_enter_valid_creds(self, driver):
-        driver.get(data.stellar_burgers_url)
+        driver.get(URLs.HOMEPAGE)
 
         wait_until_visible(driver, Locators.LOGIN_ACC_BUTTON)
         driver.find_element(*Locators.LOGIN_ACC_BUTTON).click()
@@ -27,7 +27,7 @@ class TestRegister:
         driver.quit()
 
     def test_register_enter_short_pass_alert(self, driver):
-        driver.get(data.stellar_burgers_url)
+        driver.get(URLs.HOMEPAGE)
 
         wait_until_visible(driver, Locators.LOGIN_ACC_BUTTON)
         driver.find_element(*Locators.LOGIN_ACC_BUTTON).click()

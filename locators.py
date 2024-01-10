@@ -19,9 +19,12 @@ class Locators:
 
     ACCOUNT_LINK = (By.XPATH, './/a[@href="/account"]')                # ссылка на Личный кабинет
     ACCOUNT_EMAIL = (By.XPATH,                                         # поле с тестовым email в Личном кабинете
-                     f'.//label[text()="Логин"]/parent::div/input[@value="{data.email}"]')
+                     f'.//label[text()="Логин"]/parent::div/input[@value]')
 
     LOGOUT_BUTTON = (By.XPATH, './/button[text()="Выход"]')                                 # кнопка "Выход"
+
+    HEADER_LOGO = (By.XPATH, './/div[contains(@class, "AppHeader_header__logo")]//a')       # логотип сервиса
+    CONSTRUCTOR_BUTTON = (By.XPATH, './/p[text()="Конструктор"]/parent::a')                   # ссылка на Конструктор
 
     MENU_CONTAINER = (By.XPATH, './/div[contains(@class, "menuContainer")]')                # секция с ингредиентами
     BUNS_TAB = (By.XPATH, './/div[contains(@class, "noselect")]/*[text()="Булки"]')         # вкладка "Булки"
