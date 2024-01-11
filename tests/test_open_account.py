@@ -13,6 +13,6 @@ class TestOpenAccount:
         wait_until_visible(driver, Locators.ORDER_BUTTON)
 
         driver.find_element(*Locators.ACCOUNT_LINK).click()
-        wait_until_visible(driver, Locators.ACCOUNT_EMAIL)
+        email_value = wait_until_visible(driver, Locators.ACCOUNT_EMAIL).get_attribute("value")
 
-        assert driver.find_element(*Locators.ACCOUNT_EMAIL).get_attribute("value") == Creds.email
+        assert email_value == Creds.email

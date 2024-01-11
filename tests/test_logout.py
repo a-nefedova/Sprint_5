@@ -5,7 +5,7 @@ from data import URLs
 
 class TestLogout:
 
-    def test_logout_login_button(self, driver):
+    def test_logout_login_url(self, driver):
         driver.get(URLs.LOGIN)
 
         log_in(driver)
