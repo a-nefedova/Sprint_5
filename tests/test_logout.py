@@ -15,6 +15,6 @@ class TestLogout:
         wait_until_visible(driver, Locators.ACCOUNT_EMAIL)
 
         driver.find_element(*Locators.LOGOUT_BUTTON).click()
-        wait_until_url_change(driver, URLs.ACCOUNT)
+        wait_until_url_change(driver, URLs.LOGGED_ACCOUNT)
 
         assert driver.current_url == URLs.LOGIN

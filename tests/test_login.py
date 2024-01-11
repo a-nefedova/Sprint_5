@@ -20,7 +20,9 @@ class TestLogin:
         driver.get(URLs.ACCOUNT)
 
         log_in(driver)
-        assert wait_until_visible(driver, Locators.BASKET_BUTTON).text == 'Оформить заказ'
+        basket_button = wait_until_visible(driver, Locators.BASKET_BUTTON).text
+
+        assert basket_button == 'Оформить заказ'
 
     def test_login_from_register_form(self, driver):
         driver.get(URLs.REGISTER)
@@ -28,7 +30,9 @@ class TestLogin:
         driver.find_element(*Locators.LOGIN_LINK).click()
 
         log_in(driver)
-        assert wait_until_visible(driver, Locators.BASKET_BUTTON).text == 'Оформить заказ'
+        basket_button = wait_until_visible(driver, Locators.BASKET_BUTTON).text
+
+        assert basket_button == 'Оформить заказ'
 
     def test_login_from_forgot_pass_form(self, driver):
         driver.get(URLs.FORGOT_PASS)
@@ -36,4 +40,6 @@ class TestLogin:
         wait_until_visible(driver, Locators.LOGIN_LINK).click()
 
         log_in(driver)
-        assert wait_until_visible(driver, Locators.BASKET_BUTTON).text == 'Оформить заказ'
+        basket_button = wait_until_visible(driver, Locators.BASKET_BUTTON).text
+
+        assert basket_button == 'Оформить заказ'

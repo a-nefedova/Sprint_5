@@ -1,7 +1,6 @@
 from locators import Locators
 from helper import log_in, wait_until_visible
 from data import URLs, Creds
-from selenium.webdriver.common.by import By
 
 
 class TestRegister:
@@ -20,7 +19,9 @@ class TestRegister:
         driver.find_element(*Locators.REG_BUTTON).click()
 
         log_in(driver, Creds.temp_email)
-        assert wait_until_visible(driver, Locators.BASKET_BUTTON).text == 'Оформить заказ'
+        basket_button = wait_until_visible(driver, Locators.BASKET_BUTTON).text
+
+        assert basket_button == 'Оформить заказ'
 
     def test_register_enter_short_pass_error(self, driver):
         driver.get(URLs.HOMEPAGE)
@@ -35,4 +36,6 @@ class TestRegister:
         driver.find_element(*Locators.PASSWORD).send_keys('12345')
         driver.find_element(*Locators.REG_BUTTON).click()
 
-        assert driver.find_element(*Locators.INPUT_ERROR).text == "Некорректный пароль"
+        input_error = driver.find_element(*Locators.INPUT_ERROR).text
+
+        assert input_error == "Некорректный пароль"
