@@ -17,4 +17,4 @@ class Creds:
     email = 'anastasiyanefedova4042@yandex.ru'
     password = '4815162342'
 
-    temp_email = f'anastasianefedova4{randint(100, 999)}@yandex.ru'
+    temp_email = f'anastasiyanefedova4{randint(100, 999)}@yandex.ru'
