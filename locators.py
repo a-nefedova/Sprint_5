@@ -5,8 +5,8 @@ class Locators:
 
     USER_NAME = (By.XPATH, './/form//label[text()="Имя"]/parent::*/input')  # поле для ввода имени при регистрации
     EMAIL = (By.XPATH, './/form//label[text()="Email"]/parent::*/input')    # поле для ввода email при регистрации
-    PASSWORD = (By.XPATH, './/input[@type="password"]')                 # поле для ввода пароля при регистрации
-    INPUT_ERROR = (By.CLASS_NAME, 'input__error')                       # ошибка ввода
+    PASSWORD = (By.XPATH, './/input[@type="password"]')                     # поле для ввода пароля при регистрации
+    INVALID_PASS_ALERT = (By.XPATH, './/p[text()="Некорректный пароль"]')   # ошибка ввода
 
     LOGIN_ACC_BUTTON = (By.XPATH, './/button[text()="Войти в аккаунт"]')    # кнопка "Войти в аккаунт" на главной
     LOGIN_BUTTON = (By.XPATH, './/button[text()="Войти"]')                  # кнопка "Войти" в форме логина
@@ -33,4 +33,5 @@ class Locators:
     CURRENT_TAB = (By.XPATH, './/div[contains(@class, "current")]/*')                       # текущая вкладка
     UNSELECTED_TAB = (By.XPATH,                                                             # неактивная вкладка
                       './/div[not(contains(@class, "current")) and contains(@class, "noselect")]/*')
+
     H1_HEADER = (By.XPATH, './/main//h1')                                                   # заголовок 1 уровня

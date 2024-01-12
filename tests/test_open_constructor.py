@@ -1,5 +1,5 @@
 from locators import Locators
-from helper import log_in, wait_until_visible
+from helper import log_in_and_get_to_acc, wait_until_visible
 from data import URLs
 
 
@@ -8,11 +8,7 @@ class TestOpenConstructor:
     def test_open_constructor_button(self, driver):
         driver.get(URLs.LOGIN)
 
-        log_in(driver)
-        wait_until_visible(driver, Locators.ORDER_BUTTON)
-
-        driver.find_element(*Locators.ACCOUNT_LINK).click()
-        wait_until_visible(driver, Locators.ACCOUNT_EMAIL)
+        log_in_and_get_to_acc(driver)
 
         driver.find_element(*Locators.CONSTRUCTOR_BUTTON).click()
 
@@ -23,11 +19,7 @@ class TestOpenConstructor:
     def test_open_constructor_logo(self, driver):
         driver.get(URLs.LOGIN)
 
-        log_in(driver)
-        wait_until_visible(driver, Locators.ORDER_BUTTON)
-
-        driver.find_element(*Locators.ACCOUNT_LINK).click()
-        wait_until_visible(driver, Locators.ACCOUNT_EMAIL)
+        log_in_and_get_to_acc(driver)
 
         driver.find_element(*Locators.LOGO).click()
 
